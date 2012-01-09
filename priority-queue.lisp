@@ -60,7 +60,7 @@
   (let ((n (pqueue-length pqueue)))
     (declare (fixnum n))
     (let* ((capacity2 (if (< n 64) (* 2 (1+ n)) (* 3 (truncate (/ n 2)))))
-	   (capacity3 (1+ (max capacity capacity2))))
+	   (capacity3 (max capacity capacity2)))
       (assert (>= capacity2 0))
       (assert (>= capacity3 0))
       (let ((keys (pqueue-keys pqueue))
@@ -118,7 +118,7 @@
     (declare (fixnum index))
     (let ((predicate (pqueue-predicate pqueue))
 	  (keys (pqueue-keys pqueue)))
-      (when (>= index (length keys))
+      (when (>= (1+ index) (length keys))
 	(increase pqueue (1+ (1+ index))))  ; 1+ to have a default value in the end
       (setf (pqueue-length pqueue) (1+ index))
       (let ((keys (pqueue-keys pqueue))
