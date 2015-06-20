@@ -19,6 +19,7 @@
 (defsystem :priority-queue
   :version "0.1"
   :description "A priority queue for Common Lisp."
+  :author "David Sorokin"
   :licence "MIT"
   :components ((:file "priority-queue")
                (:static-file "README")))
